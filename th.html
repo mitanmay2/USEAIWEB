@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        :root {
+            --color1: #FFEA00;
+            --color2: #FFCA3A;
+            --color3: #F7D069;
+            --color4: #FFFFD0;
+            --color5: #0015FF;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--color4);
+        }
+
+        nav {
+            background-color: var(--color5);
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        nav ul li {
+            margin: 0;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: var(--color2);
+            color: var(--color5);
+        }
+
+        #home, #about, #projects, #contact, #copilot {
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        #home {
+            background-color: var(--color1);
+            color: var(--color5);
+        }
+
+        #about {
+            background-color: var(--color2);
+            color: var(--color5);
+        }
+
+        #projects {
+            background-color: var(--color3);
+            color: var(--color5);
+        }
+
+        #contact {
+            background-color: var(--color4);
+            color: var(--color5);
+        }
+
+        #copilot {
+            background-color: var(--color2);
+            color: var(--color5);
+        }
+
+        h1 {
+            font-size: 3em;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        p {
+            font-size: 1.2em;
+            animation: slideIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#copilot">Copilot</a></li>
+        </ul>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home">
+        <h1>Welcome to My Portfolio</h1>
+        <p>This is a fictional website showcasing my work and skills.</p>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about">
+        <h1>About Me</h1>
+        <p>Hi! I'm [Your Name], a passionate web developer with a knack for creating stunning and functional websites. With experience in HTML, CSS, and JavaScript, I love bringing ideas to life on the web. My goal is to continue learning and growing in the field of web development, while making a positive impact through my work.</p>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h1>My Projects</h1>
+        <p>Here are some of the projects I've worked on:</p>
+        <ul>
+            <li>Project 1: [Description of Project 1]</li>
+            <li>Project 2: [Description of Project 2]</li>
+            <li>Project 3: [Description of Project 3]</li>
+        </ul>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact">
+        <h1>Contact Me</h1>
+        <p>If you'd like to get in touch, feel free to reach out via email at [Your Email] or connect with me on social media.</p>
+    </section>
+
+    <!-- Copilot Section -->
+    <section id="copilot">
+        <h1>Copilot</h1>
+        <p>As an AI assistant, Copilot helps users with a variety of tasks, from answering questions to generating creative content. With advanced capabilities in natural language processing and machine learning, Copilot aims to enhance productivity and provide valuable support in daily activities.</p>
+    </section>
+
+    <script>
+        // Add any JavaScript functionality if needed
+        document.addEventListener("DOMContentLoaded", function() {
+            // Example animation trigger on scroll
+            window.addEventListener("scroll", function() {
+                document.querySelectorAll("section").forEach(section => {
+                    let rect = section.getBoundingClientRect();
+                    if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+                        section.style.animation = "fadeIn 1s forwards";
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanmay's Portfolio</title>
+    <style>
+        /* CSS Custom Properties */
+        :root {
+            --color-primary: #FFEA00;
+            --color-secondary: #FFCA3A;
+            --color-tertiary: #F7D069;
+            --color-background: #FFFFD0;
+            --color-text: #0015FF;
+            --animation-speed: 0.5s;
+        }
+
+        /* Reset default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--color-background);
+            color: var(--color-text);
+        }
+
+        /* Navbar styles with animation */
+        #navbar {
+            background-color: var(--color-primary);
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transform: translateY(-100%);
+            transition: transform var(--animation-speed) ease;
+        }
+
+        #navbar.active {
+            transform: translateY(0);
+        }
+
+        #navbar ul {
+            list-style-type: none;
+            text-align: center;
+        }
+
+        #navbar ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        #navbar ul li a {
+            color: var(--color-text);
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px;
+            transition: background-color var(--animation-speed);
+            opacity: 0;
+        }
+
+        #navbar.active ul li a {
+            animation: fadeInUp var(--animation-speed) ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #navbar ul li a:hover {
+            background-color: var(--color-secondary);
+            color: var(--color-background);
+        }
+
+        /* Home Section with animation */
+        .home-section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to right, var(--color-tertiary), var(--color-background));
+            text-align: center;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all var(--animation-speed) ease;
+        }
+
+        .home-section.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .home-content h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: var(--color-text);
+            animation: fadeIn var(--animation-speed) ease forwards;
+        }
+
+        .home-content p {
+            font-size: 1.2em;
+            color: var(--color-text);
+            animation: fadeIn calc(var(--animation-speed) * 1.5) ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { 
+                opacity: 0; 
+            }
+            to { 
+                opacity: 1; 
+            }
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 100px 20px;
+            background-color: var(--color-background);
+            color: var(--color-text);
+            text-align: center;
+        }
+
+        .about-content h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: var(--color-primary);
+            animation: fadeInUp var(--animation-speed) ease-out;
+        }
+
+        .profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            animation: fadeIn var(--animation-speed) ease-out;
+        }
+
+        .profile-info {
+            text-align: left;
+            animation: fadeInUp calc(var(--animation-speed) * 1.5) ease-out;
+        }
+
+        .profile-info h3 {
+            font-size: 1.8em;
+            color: var(--color-secondary);
+        }
+
+        .profile-info p {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        /* Projects Section */
+        .projects-section {
+            padding: 100px 20px;
+            background-color: var(--color-tertiary);
+            color: var(--color-text);
+            text-align: center;
+        }
+
+        .projects-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: var(--color-primary);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-item {
+            background: var(--color-background);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(var(--color-text), 0.1);
+            transition: transform var(--animation-speed) ease, box-shadow var(--animation-speed) ease;
+        }
+
+        .project-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(var(--color-text), 0.2);
+        }
+
+        .project-item h3 {
+            color: var(--color-secondary);
+            margin-bottom: 10px;
+        }
+
+        .project-link {
+            color: var(--color-text);
+            text-decoration: none;
+            display: inline-block;
+            padding: 5px 10px;
+            border: 1px solid var(--color-text);
+            border-radius: 5px;
+            transition: background-color var(--animation-speed), color var(--animation-speed);
+        }
+
+        .project-link:hover {
+            background-color: var(--color-text);
+            color: var(--color-background);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 100px 20px;
+            background-color: var(--color-background);
+            color: var(--color-text);
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: var(--color-primary);
+        }
+
+        #contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #contact-form input, #contact-form textarea {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid var(--color-text);
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        #contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        #contact-form button {
+            background-color: var(--color-secondary);
+            color: var(--color-text);
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color var(--animation-speed);
+        }
+
+        #contact-form button:hover {
+            background-color: var(--color-primary);
+        }
+
+        /* X Section */
+        #x-section {
+            padding: 100px 20px;
+            background-color: var(--color-background);
+            color: var(--color-text);
+            text-align: center;
+        }
+
+        #x-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: var(--color-primary);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            #navbar ul li {
+                display: block;
+                margin: 10px 0;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .profile {
+                flex-direction: row;
+                align-items: flex-start;
+                text-align: left;
+            }
+            .profile-info {
+                margin-left: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#x">X</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="home-section">
+        <div class="home-content">
+            <h1>Welcome to Tanmay's World</h1>
+            <p>Discover innovation and creativity here.</p>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="about-content">
+            <h2>About Me</h2>
+            <div class="profile">
+                <img src="placeholder.jpg" alt="Profile of Tanmay" class="profile-img">
+                <div class="profile-info">
+                    <h3>Tanmay</h3>
+                    <p><strong>Role:</strong> Digital Innovator</p>
+                    <p><strong>Location:</strong> Mumbai, India</p>
+                    <p><strong>Background:</strong></p>
+                    <p>Tanmay, a visionary in digital arts and technology, has made waves with his innovative projects. With a knack for merging AI with traditional Indian art, he has created experiences that resonate globally. His work on Netaji Subhas Chandra Bose's digital museum and AI-driven social campaigns for justice and democracy are just a glimpse into his passion for using technology for societal good. When not coding or designing, Tanmay celebrates Indian festivals, shares his thoughts on X, and advocates for digital education.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects-section">
+        <h2>My Projects</h2>
+        <div class="projects-grid">
+            <div class="project-item">
+                <h3>Digital Netaji Museum</h3>
+                <p>A virtual reality experience celebrating Netaji Subhas Chandra Bose's legacy through interactive exhibits.</p>
+                <a href="#" class="project-link">View Project</a>
+            </div>
+            <div class="project-item">
+                <h3>AI for Social Justice</h3>
+                <p>An AI tool analyzing data for patterns in social issues like News , how to make strict Law , AI is harmful.</p>
+                <a href="#" class="project-link">View Project</a>
+            </div>
+            <div class="project-item">
+                <h3>Interactive Indian Festivals</h3>
+                <p>Augmented reality app to experience Indian festivals, promoting cultural heritage through technology.</p>
+                <a href="#" class="project-link">View Project</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <h2>Contact Me</h2>
+        <form id="contact-form">
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <section id="x" class="x-section">
+        <h2>X Highlights</h2>
+        <p>From advocating for the protection of Hindus in neighboring countries to celebrating Indian Army Day and remembering Sushant Singh Rajput, my X posts reflect my commitment to social issues, tech innovation, and cultural pride.</p>
+    </section>
+
+    <script>
+        // Smooth scrolling and animations
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+
+                    // If it's the home section, add or remove classes for animations
+                    if (targetId === '#home') {
+                        document.querySelector('.home-section').classList.add('active');
+                    } else {
+                        document.querySelector('.home-section').classList.remove('active');
+                    }
+
+                    // Animate navbar
+                    document.getElementById('navbar').classList.add('active');
+                }
+            });
+        });
+
+        // Animate navbar on page load
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                document.getElementById('navbar').classList.add('active');
+            } else {
+                document.getElementById('navbar').classList.remove('active');
+            }
+        });
+
+        // Ensure home section animates on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('.home-section').classList.add('active');
+        });
+
+        // Handle form submission
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.'); // Placeholder for real submission logic
+            this.reset(); // Reset the form
+        });
+    </script>
+</body>
+</html>
